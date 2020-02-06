@@ -16,5 +16,10 @@ def test_message(message):
     emit('server response', {'data_of_server': 'This is a certificate!'})
     print('Server has send a certification to client.')
 
+@socketio.on('my event')
+def terminal_response(message):
+    print('Terminal recived: {}'.format(message))
+    emit('my response', {'data': 'Yeah!'})
+
 if __name__ == '__main__':
     socketio.run(app)
